@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Domande agli Sposi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#f0ead8;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem;font-family:'Inter',sans-serif}
@@ -29,48 +29,39 @@ textarea{resize:vertical;min-height:76px}
 .rb:disabled{opacity:.5;cursor:not-allowed}
 .smsg{display:none;background:rgba(46,125,50,.1);color:#2a6e2e;border-radius:8px;padding:9px 12px;font-size:13px;margin-bottom:12px;align-items:center;gap:6px}
 .qhd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.qtl{font-size:13px;font-weight:500;color:#8a7650;display:flex;align-items:center;gap:6px}
+.qtl{font-size:13px;font-weight:500;color:#8a7650}
 .qts{font-size:11px;color:#b0a080;transition:opacity .3s}
 .qc{background:rgba(255,255,255,.54);border:.5px solid rgba(160,136,64,.22);border-radius:12px;padding:1rem 1.25rem;margin-bottom:10px;position:relative;transition:border-color .15s}
 .qc:hover{border-color:rgba(160,136,64,.42)}
 .qx{font-family:'Playfair Display',serif;font-size:17px;color:#2c2010;margin-bottom:10px;line-height:1.55;padding-right:82px}
 .qm{font-size:12px;color:#b0a080;display:flex;align-items:center;gap:6px}
 .qn{color:#b25070;font-weight:500}
-.dbt{position:absolute;top:10px;right:10px;background:none;border:.5px solid rgba(192,80,80,.4);color:#c05050;border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:4px}
+.dbt{position:absolute;top:10px;right:10px;background:none;border:.5px solid rgba(192,80,80,.4);color:#c05050;border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif}
 .dbt:hover{background:rgba(192,80,80,.08)}
 .emp{text-align:center;padding:2.5rem 1rem;color:#b0a080;font-size:14px}
 .ab{border-top:.5px solid rgba(160,136,64,.22);padding-top:1rem;margin-top:1.5rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.asp{flex:1}
-.ast{font-size:12px;color:#b0a080}
-.ast.on{color:#c05050}
-.atg{background:none;border:.5px solid rgba(160,136,64,.22);border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;color:#b0a080;display:flex;align-items:center;gap:4px;font-family:'Inter',sans-serif}
-.atg:hover{background:rgba(160,136,64,.07)}
-.atg.on{border-color:rgba(192,80,80,.4);color:#c05050}
+.asp{flex:1}.ast{font-size:12px;color:#b0a080}.ast.on{color:#c05050}
+.atg{background:none;border:.5px solid rgba(160,136,64,.22);border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;color:#b0a080;font-family:'Inter',sans-serif}
+.atg:hover{background:rgba(160,136,64,.07)}.atg.on{border-color:rgba(192,80,80,.4);color:#c05050}
 .pwf{display:none;width:100%;margin-top:10px;background:rgba(255,255,255,.54);border:.5px solid rgba(160,136,64,.22);border-radius:12px;padding:1rem;flex-direction:column;gap:8px}
-.pwr{display:flex;gap:8px}
-.pwr input{flex:1}
+.pwr{display:flex;gap:8px}.pwr input{flex:1}
 .pwc{background:none;border:.5px solid rgba(160,136,64,.3);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:14px;color:#8a7650;font-family:'Inter',sans-serif}
 .pwk{background:#b25070;color:#fff;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:14px;font-family:'Inter',sans-serif}
 .pwk:hover{background:#8a3352}
 .pwe{display:none;font-size:12px;color:#c05050}
-.setup-msg{background:rgba(184,148,64,.1);border:.5px solid rgba(184,148,64,.35);border-radius:12px;padding:1rem 1.25rem;font-size:13px;color:#7a5e20;margin-bottom:1.5rem;line-height:1.6}
-.setup-msg strong{display:block;margin-bottom:4px;font-size:14px}
+.err{background:rgba(192,80,80,.08);border:.5px solid rgba(192,80,80,.25);border-radius:8px;padding:9px 12px;font-size:13px;color:#c05050;margin-bottom:12px;display:none}
 </style>
 </head>
 <body>
 <div class="card">
   <p class="eye">&#9825; Cerimonia</p>
   <h1>Hai una domanda per gli sposi?</h1>
-  <p class="sub">Scrivila qui sotto &#8212; la vedranno tutti gli invitati</p>
+  <p class="sub">Scrivila qui sotto &mdash; la vedranno tutti gli invitati</p>
   <div class="orn">&#10022;</div>
 
-  <div id="setup-msg" class="setup-msg" style="display:none">
-    <strong>&#9888;&#65039; Database non ancora configurato</strong>
-    Segui le istruzioni nel README per attivare il database Firebase.
-  </div>
-
-  <div id="fb" class="fb">
+  <div class="fb">
     <div id="smsg" class="smsg">&#10003; Domanda inviata!</div>
+    <div id="errmsg" class="err">Errore nell'invio, riprova.</div>
     <div class="fr">
       <label for="qname">Il tuo nome <span style="color:#b0a080;font-weight:400">(facoltativo)</span></label>
       <input type="text" id="qname" placeholder="es. Marco e Federica"/>
@@ -80,12 +71,12 @@ textarea{resize:vertical;min-height:76px}
       <textarea id="qtext" rows="3" placeholder="Scrivi qui la tua domanda..."></textarea>
     </div>
     <div class="fr">
-      <button class="rb" onclick="subQ()" id="sbtn">&#10148; Invia domanda</button>
+      <button class="rb" onclick="subQ()" id="sbtn">&#9658; Invia domanda</button>
     </div>
   </div>
 
   <div class="qhd">
-    <span class="qtl">&#9000; <span id="qlbl">Domande</span></span>
+    <span class="qtl"><span id="qlbl">Caricamento...</span></span>
     <span class="qts" id="qts"></span>
   </div>
   <div id="ql"></div>
@@ -97,7 +88,7 @@ textarea{resize:vertical;min-height:76px}
     <div class="pwf" id="pwf">
       <label for="pwi">Password admin</label>
       <div class="pwr">
-        <input type="password" id="pwi" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" onkeydown="if(event.key==='Enter')okPw()"/>
+        <input type="password" id="pwi" placeholder="password" onkeydown="if(event.key==='Enter')okPw()"/>
         <button class="pwk" onclick="okPw()">Accedi</button>
         <button class="pwc" onclick="closePw()">Annulla</button>
       </div>
@@ -107,26 +98,31 @@ textarea{resize:vertical;min-height:76px}
 </div>
 
 <script>
-const DB_URL = 'FIREBASE_DATABASE_URL';
+const TOKEN = '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';
+const API   = 'https://api.github.com/repos/provalo12345/matrimonio-qa/issues';
+const HDRS  = {
+  'Authorization': 'Bearer ' + TOKEN,
+  'Accept': 'application/vnd.github.v3+json',
+  'Content-Type': 'application/json'
+};
 const PW = 'sposi2026';
-let isA = false, qs = [], polling;
+let isA = false, qs = [];
 
-function isConfigured() { return DB_URL !== 'FIREBASE_DATABASE_URL'; }
-
-function ft(ts) { return new Date(ts).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'}); }
-function esc(s) { const d=document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
+function ft(ts){ return new Date(ts).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'}); }
+function esc(s){ const d=document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
 
 async function loadQ(silent) {
-  if (!isConfigured()) {
-    document.getElementById('setup-msg').style.display = 'block';
-    document.getElementById('ql').innerHTML = '<div class="emp">In attesa della configurazione del database.</div>';
-    document.getElementById('qlbl').textContent = 'Domande';
-    return;
-  }
   try {
-    const r = await fetch(DB_URL + '/questions.json');
+    const r = await fetch(API + '?state=open&per_page=100&sort=created&direction=desc', {headers: HDRS});
     const data = await r.json();
-    qs = data ? Object.entries(data).map(([k,v]) => ({...v, key:k})) : [];
+    qs = Array.isArray(data)
+      ? data.filter(i => !i.pull_request).map(i => ({
+          number: i.number,
+          text: i.title,
+          name: (i.body && i.body.trim() && i.body.trim() !== '-') ? i.body.trim() : null,
+          ts: new Date(i.created_at).getTime()
+        }))
+      : [];
   } catch(e) { qs = []; }
   render();
   if (silent) {
@@ -137,58 +133,63 @@ async function loadQ(silent) {
   }
 }
 
-async function saveQ(q) {
-  await fetch(DB_URL + '/questions.json', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(q)
-  });
-}
-
-async function delQ(key) {
-  await fetch(DB_URL + '/questions/' + key + '.json', { method: 'DELETE' });
-  await loadQ(false);
-  render();
-}
-
 function render() {
   const list = document.getElementById('ql');
-  const lbl = document.getElementById('qlbl');
+  const lbl  = document.getElementById('qlbl');
   const n = qs.length;
-  lbl.textContent = n===0?'Nessuna domanda ancora':n===1?'1 domanda':n+' domande';
-  if (n===0) { list.innerHTML='<div class="emp">Sii il primo a fare una domanda!</div>'; return; }
-  const s = [...qs].sort((a,b) => b.ts - a.ts);
-  list.innerHTML = s.map(q => `<div class="qc">
-    ${isA?`<button class="dbt" onclick="delQ('${q.key}')">&#128465; Elimina</button>`:''}
+  lbl.textContent = n === 0 ? 'Nessuna domanda ancora' : n === 1 ? '1 domanda' : n + ' domande';
+  if (n === 0) { list.innerHTML = '<div class="emp">Sii il primo a fare una domanda!</div>'; return; }
+  list.innerHTML = qs.map(q => `<div class="qc">
+    ${isA ? `<button class="dbt" onclick="delQ(${q.number})">&#128465; Elimina</button>` : ''}
     <p class="qx">${esc(q.text)}</p>
-    <div class="qm">${q.name?`<span class="qn">${esc(q.name)}</span><span>&middot;</span>`:''}<span>${ft(q.ts)}</span></div>
+    <div class="qm">${q.name ? `<span class="qn">${esc(q.name)}</span><span>&middot;</span>` : ''}<span>${ft(q.ts)}</span></div>
   </div>`).join('');
 }
 
 async function subQ() {
-  if (!isConfigured()) return;
   const text = document.getElementById('qtext').value.trim();
   if (!text) { document.getElementById('qtext').focus(); return; }
   const name = document.getElementById('qname').value.trim();
-  const btn = document.getElementById('sbtn');
+  const btn  = document.getElementById('sbtn');
   btn.disabled = true; btn.textContent = 'Invio...';
   try {
-    await saveQ({text, name:name||null, ts:Date.now()});
-    document.getElementById('qtext').value = '';
-    document.getElementById('qname').value = '';
-    const sm = document.getElementById('smsg');
-    sm.style.display = 'flex';
-    setTimeout(() => { sm.style.display = 'none'; }, 3500);
-    await loadQ(false);
-  } catch(e) {}
-  btn.disabled = false; btn.innerHTML = '&#10148; Invia domanda';
+    const r = await fetch(API, {
+      method: 'POST',
+      headers: HDRS,
+      body: JSON.stringify({ title: text, body: name || '-' })
+    });
+    if (r.ok) {
+      document.getElementById('qtext').value = '';
+      document.getElementById('qname').value = '';
+      const sm = document.getElementById('smsg');
+      sm.style.display = 'flex';
+      setTimeout(() => { sm.style.display = 'none'; }, 3500);
+      await loadQ(false);
+    } else {
+      document.getElementById('errmsg').style.display = 'block';
+      setTimeout(() => { document.getElementById('errmsg').style.display = 'none'; }, 4000);
+    }
+  } catch(e) {
+    document.getElementById('errmsg').style.display = 'block';
+    setTimeout(() => { document.getElementById('errmsg').style.display = 'none'; }, 4000);
+  }
+  btn.disabled = false; btn.innerHTML = '&#9658; Invia domanda';
+}
+
+async function delQ(num) {
+  if (!isA) return;
+  await fetch(API + '/' + num, {
+    method: 'PATCH', headers: HDRS,
+    body: JSON.stringify({ state: 'closed' })
+  });
+  await loadQ(false);
 }
 
 function clickA() {
   if (isA) {
     isA = false;
     document.getElementById('atg').className = 'atg';
-    document.getElementById('atg').textContent = '&#128274; Admin';
+    document.getElementById('atg').textContent = '\uD83D\uDD12 Admin';
     document.getElementById('ast').textContent = '';
     document.getElementById('ast').className = 'ast';
     render(); return;
@@ -204,16 +205,15 @@ function okPw() {
   if (document.getElementById('pwi').value === PW) {
     isA = true; closePw();
     document.getElementById('atg').className = 'atg on';
-    document.getElementById('atg').innerHTML = '&#128737; Esci da admin';
+    document.getElementById('atg').textContent = 'Esci da admin';
     document.getElementById('ast').textContent = 'Modalit\u00e0 admin attiva';
     document.getElementById('ast').className = 'ast on';
     render();
   } else {
-    const pe = document.getElementById('pwe');
-    pe.style.display = 'block';
+    document.getElementById('pwe').style.display = 'block';
     document.getElementById('pwi').value = '';
     document.getElementById('pwi').focus();
-    setTimeout(() => { pe.style.display = 'none'; }, 2500);
+    setTimeout(() => { document.getElementById('pwe').style.display = 'none'; }, 2500);
   }
 }
 
@@ -224,7 +224,7 @@ function closePw() {
 }
 
 loadQ(false);
-setInterval(() => loadQ(true), 6000);
+setInterval(() => loadQ(true), 20000);
 </script>
 </body>
 </html>
